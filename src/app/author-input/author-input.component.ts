@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Author } from '../classes/author';
+import { AuthorService } from '../services/author-service';
 
 @Component({
   selector: 'app-author-input',
@@ -6,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./author-input.component.css']
 })
 export class AuthorInputComponent implements OnInit {
+  
+  isError: boolean = false;
+  errors: String[] = [];
+  author: Author = new Author();
 
-  constructor() { }
+  constructor(private authorService: AuthorService) { }
 
   ngOnInit() {
   }

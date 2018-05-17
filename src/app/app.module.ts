@@ -16,14 +16,15 @@ import { HomeComponent } from './home/home.component';
 import { BookService } from './services/book-service';
 import { AuthorService } from './services/author-service';
 import { UserService } from './services/user-service';
+import { AuthGuard } from './auth-guard';
 
 export const AppRoutes : any = [
   { path: "", component: AppComponent},
   { path: "home", component: HomeComponent},
   { path: "list-author", component:  AuthorListComponent},
-  { path: "input-author", component: AuthorInputComponent},
+  { path: "input-author", component: AuthorInputComponent, canActivate: [AuthGuard]},
   { path: "list-book", component: BookListComponent },
-  { path: "input-book", component: BookInputComponent},
+  { path: "input-book", component: BookInputComponent, canActivate: [AuthGuard]},
   { path: "register", component: RegisterComponent},
   { path: "login", component: LoginComponent}
 ];
@@ -46,7 +47,8 @@ export const AppRoutes : any = [
     NgProgressModule,
     RouterModule.forRoot(AppRoutes,{useHash: true})
   ],
-  providers: [AuthorService, BookService, UserService],
+  providers: [AuthorService, BookService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 

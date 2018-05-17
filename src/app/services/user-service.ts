@@ -23,17 +23,17 @@ export class UserService{
     register(user: User){
         let userTmp = Object.assign({}, user);
         userTmp.password = Md5.hashStr(userTmp.password).toString();
-        this.http.post(this.url+'/register', userTmp,this.options)
+        return this.http.post(this.url+'/register', userTmp,this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
-    login(logiData: any){
-        let tmpData = Object.assign({}, logiData);
-        tmpData.password = Md5.hashStr(tmpData.password).toString();
+    login(loginData: any){
+        //let tmpData = Object.assign({}, logiData);
+        //tmpData.password = Md5.hashStr(tmpData.password).toString();
         return this
             .http
-            .post(this.url + '/login', tmpData, this.options)
+            .post(this.url + '/login', loginData, this.options)
             .map(res => res.json())
             .catch(this.handleError);
     }
