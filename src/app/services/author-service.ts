@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, RequestOptions } from "@angular/http";
+import { Http, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/Rx'
 import { Author } from "../classes/author";
@@ -29,7 +29,7 @@ export class AuthorService{
 
     save(author: Author){
         this.headers = new Headers({
-            'Content-Type': 'application/json',
+            'Content-Type' : 'application/json', 
             'Cache-Control': 'no-cache',
             'Authorization': 'Basic ' + localStorage.getItem('token')
         });

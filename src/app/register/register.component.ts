@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { User } from '../classes/user';
 import { UserService } from '../services/user-service';
 import { Router } from '@angular/router';
@@ -14,7 +14,9 @@ export class RegisterComponent implements OnInit {
   isError: boolean = false;
   errors: String[] = [];
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { 
+    
+  }
 
   ngOnInit() {
     

@@ -11,6 +11,7 @@ import { NgProgress } from 'ngx-progressbar';
 export class BookListComponent implements OnInit {
 
   books: Book[] = [];
+  serchKey: String = '';
 
   constructor(private bookService: BookService, public progress: NgProgress) { }
 
@@ -24,5 +25,20 @@ export class BookListComponent implements OnInit {
       this.progress.done();
     });
   }
+
+  onSearch(){
+    var seachData = {
+      key : this.serchKey
+    }
+    this.progress.start();
+    this.bookService.seach(seachData).subscribe(output => {
+      this.books = output;
+      this.progress.done();
+    },errors=>{
+      console.log(errors);
+      this.progress.done();
+    });
+  }
+
 
 }

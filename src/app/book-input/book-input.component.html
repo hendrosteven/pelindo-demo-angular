@@ -1,3 +1,42 @@
-<p>
-  book-input works!
-</p>
+
+<div class="row">
+  <div class="col-lg-6">
+      <h2>
+          Input New Book
+        </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-5">
+
+    <div *ngIf="isError" class="alert alert-danger" role="alert">
+      <ul>
+        <li *ngFor="let err of errors">{{ err }}</li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label for="code">Code</label>
+      <input type="text" class="form-control" placeholder="Enter book code" [(ngModel)]="book.code">
+    </div>
+    <div class="form-group">
+      <label for="code">Title</label>
+      <input type="text" class="form-control" placeholder="Enter book title" [(ngModel)]="book.title">
+    </div>
+    <div class="form-group">
+      <label for="description">Descriptions</label>
+      <input type="email" class="form-control" placeholder="Enter description" [(ngModel)]="book.description">
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" class="form-control" placeholder="Enter price" [(ngModel)]="book.price">
+    </div>
+    <div class="form-group">
+      <label>Author</label>
+      <select class="form-control" [(ngModel)]="book.author">
+        <option *ngFor="let author of authors" [ngValue]="author">{{author.name}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
+  </div>
+</div>

@@ -1,6 +1,21 @@
-<div class="col-lg-12">
-  <h3>Book List</h3>
+<div class="row">
+  <div class="col-lg-6">
+    <h2>
+      Book List
+    </h2>
+  </div>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="serchKey">
+      <span class="input-group-btn">
+        <button class="btn btn-info" type="button" (click)="onSearch()">
+          <i class="fa fa-search" aria-hidden="true"></i> 
+        </button>
+      </span>
+    </div>
+  </div>
 </div>
+
 <div class="row">
   <div class="col-lg-12">
     <table class="table">
